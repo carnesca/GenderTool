@@ -1,5 +1,6 @@
 import nltk
 from collections import Counter
+import matplotlib.pyplot as plt
 
 male_names = nltk.corpus.names.words("male.txt")
 fem_names = nltk.corpus.names.words("female.txt")
@@ -34,3 +35,12 @@ perc_female = len(females) / len(all_names) * 100
 
 print("Male: " + str(perc_male)[:2] + "%")
 print("Female: " + str(perc_female)[:2] + "%")
+
+# Prints pie chart showing percentage breakdown
+labels = ['Male','Female']
+sizes = [perc_male,perc_female]
+colors = ["#89cff0","#ffb6c1"]
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes,labels=labels,startangle=90,autopct='%1.0f%%',colors=colors)
+ax1.axis('equal') 
+plt.show()
